@@ -4,21 +4,21 @@ This guide explains how to create a simple project using React + Vite + JavaScri
 
 ## 📌 Prerequisites
 Before starting, make sure you have:
-Node.js installed
-npm or yarn package manager
+- Node.js installed
+- npm or yarn package manager
 
 
 ## 🚀 1. Create a React + Vite Project
 
 Run the following command:
-npm create vite@latest my-map-app --template react
+- npm create vite@latest my-map-app --template react
 OR
-yarn create vite my-map-app --template react
+- yarn create vite my-map-app --template react
 
 Move into the project:
-cd my-map-app
+- cd my-map-app
 Install dependencies:
-npm install
+- npm install
 
 
 ## 🗺️ 2. Install Leaflet and React-Leaflet
@@ -88,9 +88,9 @@ export default App;
 ## ▶️ 5. Run the Project
 
 Start the development server:
-npm run dev
-Open the URL shown in terminal (usually http://localhost:5173).
-🎉 Done!
+- npm run dev
+- Open the URL shown in terminal (usually http://localhost:5173).
+- 🎉 Done!
 
 You now have a React + Vite + Leaflet project running with a fully functional map.
 Feel free to customize markers, events, layers, or add user geolocation support.
