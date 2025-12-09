@@ -1,16 +1,106 @@
-# React + Vite
+React + Vite + Leaflet Map Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This guide explains how to create a simple project using React + Vite + JavaScript and display a map using the Leaflet library.
 
-Currently, two official plugins are available:
+📌 Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Before starting, make sure you have:
 
-## React Compiler
+Node.js installed
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+npm or yarn package manager
 
-## Expanding the ESLint configuration
+🚀 1. Create a React + Vite Project
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Run the following command:
+
+npm create vite@latest my-map-app --template react
+
+OR
+
+yarn create vite my-map-app --template react
+
+Move into the project:
+
+cd my-map-app
+
+Install dependencies:
+
+npm install
+
+🗺️ 2. Install Leaflet and React-Leaflet
+
+Install required packages:
+
+npm install leaflet react-leaflet
+
+Also install Leaflet CSS:
+
+npm install leaflet/dist/leaflet.css
+
+📁 3. Setup Leaflet Map Component
+
+Create a file:
+
+src/MapView.jsx
+
+Add this code:
+
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+
+const markerIcon = new L.Icon({
+  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+});
+
+export default function MapView() {
+  return (
+    <MapContainer
+      center={[20.5937, 78.9629]}
+      zoom={5}
+      style={{ height: "100vh", width: "100%" }}
+    >
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution="&copy; OpenStreetMap Contributors"
+      />
+
+      <Marker position={[20.5937, 78.9629]} icon={markerIcon}>
+        <Popup>India Center Point</Popup>
+      </Marker>
+    </MapContainer>
+  );
+}
+
+📌 4. Use Map Component in App.jsx
+
+Replace the content of App.jsx with:
+
+import MapView from "./MapView";
+
+function App() {
+  return <MapView />;
+}
+
+export default App;
+
+▶️ 5. Run the Project
+
+Start the development server:
+
+npm run dev
+
+Open the URL shown in terminal (usually http://localhost:5173).
+
+🎉 Done!
+
+You now have a React + Vite + Leaflet project running with a fully functional map.
+
+Feel free to customize markers, events, layers, or add user geolocation support.
+
+📄 License
+
+This project is free to use for learning or personal development.
