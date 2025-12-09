@@ -1,14 +1,14 @@
-#React + Vite + Leaflet Map Project
+# React + Vite + Leaflet Map Project
 
 This guide explains how to create a simple project using React + Vite + JavaScript and display a map using the Leaflet library.
 
-##📌 Prerequisites
+## 📌 Prerequisites
 Before starting, make sure you have:
 Node.js installed
 npm or yarn package manager
 
 
-##🚀 1. Create a React + Vite Project
+## 🚀 1. Create a React + Vite Project
 
 Run the following command:
 npm create vite@latest my-map-app --template react
@@ -21,7 +21,7 @@ Install dependencies:
 npm install
 
 
-##🗺️ 2. Install Leaflet and React-Leaflet
+## 🗺️ 2. Install Leaflet and React-Leaflet
 
 Install required packages:
 npm install leaflet react-leaflet
@@ -29,55 +29,63 @@ npm install leaflet react-leaflet
 Also install Leaflet CSS:
 npm install leaflet/dist/leaflet.css
 
-
-##📁 3. Setup Leaflet Map Component
-
-Create a file:
-src/MapView.jsx
-
-Add this code:
-```import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
-
-const markerIcon = new L.Icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
-```
-
-```export default function MapView() {
-  return (
-    <MapContainer
-      center={[20.5937, 78.9629]}
-      zoom={5}
-      style={{ height: "100vh", width: "100%" }}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution="&copy; OpenStreetMap Contributors"
-      />
-
-      <Marker position={[20.5937, 78.9629]} icon={markerIcon}>
-        <Popup>India Center Point</Popup>
-      </Marker>
-    </MapContainer>
-  );
-}
-```
-
-##📌 4. Use Map Component in App.jsx
+## 📌 4. Use Map Component in App.jsx
 
 Replace the content of App.jsx with:
-import MapView from "./MapView";
+
+```
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import './App.css';
+
 function App() {
-  return <MapView />;
+
+  const position = [
+    [40.7128, -74.0060],
+    [51.5074, -0.1278],
+    [25.2048, 55.2708],
+    [28.6139, 77.2090],
+    [35.6895, 139.6917],
+    [-33.8688, 151.2093],
+    [-33.9249, 18.4241]
+  ];
+
+  const initial = [27.4955539, 77.6855554];
+
+  return (
+    <div className="App">
+      <MapContainer
+        center={initial}
+        zoom={1}
+        scrollWheelZoom={false}
+        style={{ height: '600px', width: '1000px' }}
+      >
+        {/* The TileLayer is what loads the actual map images (tiles) */}
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+
+        {/* A simple marker at the center position */}
+        {position.map((position, index) => {
+          return (
+            <Marker key={index} position={position}>
+              <Popup>
+                This is location number **{index + 1}** at: <br /> **Lat: {position[0]}, Lng: {position[1]}**
+              </Popup>
+            </Marker>
+          );
+        })}
+
+      </MapContainer>
+      <h1>Leaflet Map with React</h1>
+    </div>
+  );
 }
+
 export default App;
+```
 
-
-##▶️ 5. Run the Project
+## ▶️ 5. Run the Project
 
 Start the development server:
 npm run dev
@@ -87,5 +95,5 @@ Open the URL shown in terminal (usually http://localhost:5173).
 You now have a React + Vite + Leaflet project running with a fully functional map.
 Feel free to customize markers, events, layers, or add user geolocation support.
 
-📄 License
+## 📄 License
 This project is free to use for learning or personal development.
