@@ -10,23 +10,35 @@ Before starting, make sure you have:
 ## 🚀 1. Create a React + Vite Project
 
 Run the following command:
-``` npm create vite@latest my-map-app --template react ```
+```
+npm create vite@latest my-map-app --template react
+```
 OR
-```yarn create vite my-map-app --template react```
+```
+yarn create vite my-map-app --template react
+```
 
 Move into the project:
-``` cd my-map-app ```
+```
+cd my-map-app
+```
 Install dependencies:
-``` npm install ```
+```
+npm install
+```
 
 
 ## 🗺️ 2. Install Leaflet and React-Leaflet
 
 Install required packages:
-```npm install leaflet react-leaflet```
+```
+npm install leaflet react-leaflet
+```
 
 Also install Leaflet CSS:
-```npm install leaflet/dist/leaflet.css```
+```
+npm install leaflet/dist/leaflet.css
+```
 
 ## 📌 4. Use Map Component in App.jsx
 
@@ -87,7 +99,9 @@ export default App;
 ## ▶️ 5. Run the Project
 
 Start the development server:
-```npm run dev```
+```
+npm run dev
+```
 - Open the URL shown in terminal (usually http://localhost:5173).
 - 🎉 Done!
 
